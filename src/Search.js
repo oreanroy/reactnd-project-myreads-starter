@@ -3,9 +3,15 @@ import './App.css'
 import Book from './components/Book';
 import * as BooksAPI from './BooksAPI'
 
+
 class Search extends React.Component {
+  state = {
+    searchBooks: []
+  }
   searchBook = (query) =>{
-    console.log(BooksAPI.search(query));
+    BooksAPI.search(query).then((books) => {
+      this.setState({searchBooks: books})
+    });
   }
 
   render() {
@@ -27,6 +33,9 @@ class Search extends React.Component {
     </div>
     <div className="search-books-results">
       <ol className="books-grid">
+      {
+        this.state.searchBooks.map((data) => <li><Book book={data} key={data.id}/> </li> )
+      }
       </ol>
     </div>
   </div>)

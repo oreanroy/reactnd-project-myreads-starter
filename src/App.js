@@ -17,13 +17,15 @@ class BooksApp extends React.Component {
       this.setState({books: book})
     })
   }
-
+  changeShelf(book, shelf){
+    this.setState({book})
+  }
   render() {
     
     return (
     <BrowserRouter>
       <div className="app">
-          <Route exactpath="/" render={() => (
+          <Route exact path="/" render={() => (
           <div className="list-books">
             <div className="list-books-title">
               <h1>MyReads</h1>

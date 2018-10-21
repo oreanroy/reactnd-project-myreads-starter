@@ -9,6 +9,9 @@ class Search extends React.Component {
   state = {
     searchBooks: []
   }
+  updateBook = () =>{
+    this.props.changeShelf()
+  }
   searchBook = (query) =>{
     if(query !=='' &&  isNaN(query)){
       BooksAPI.search(query).then((books) => {
@@ -29,7 +32,7 @@ class Search extends React.Component {
       <div className="search-books-results">
         <ol className="books-grid">
         {
-          this.state.searchBooks.map((data) => <li><Book book={data} key={data.id}/> </li> )
+          this.state.searchBooks.map((data) => <li><Book book={data} key={data.id} changeShelf={this.updateBook}/> </li> )
         }
         </ol>
       </div>

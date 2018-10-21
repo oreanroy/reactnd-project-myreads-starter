@@ -1,14 +1,21 @@
 import React, {Component} from "react";
-import * as BooksAPI from '../BooksAPI'
+import * as BooksAPI from '../BooksAPI';
+import {PropTypes} from 'prop-types';
+
 export default class Book extends Component {
+    static propTypes = {
+        book: PropTypes.object.isRequired,
+        changeShelf: PropTypes.func.isRequired
+
+    } 
     change = (event) =>{
         BooksAPI.update(this.props.book, event.target.value);
         this.props.changeShelf()
     }
     render() {
-        console.log("book");
+        //console.log(this.props);
         return (
-            <div className="book">
+            <div className="book" key={this.props.book.id}>
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.smallThumbnail}")` }}></div>
                     <div className="book-shelf-changer">

@@ -24,10 +24,11 @@ class BooksApp extends React.Component {
   changeShelf = () => {
     //BooksAPI.update(book, shelf)
    // this.setState({books: book})
+   console.log("i ran")
     this.getBooks()
   }
   render() {
-    
+    console.log("app");
     return (
     <BrowserRouter>
       <div className="app">

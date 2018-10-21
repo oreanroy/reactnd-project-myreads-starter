@@ -3,7 +3,7 @@ import * as BooksAPI from '../BooksAPI'
 export default class Book extends Component {
     change = (event) =>{
         BooksAPI.update(this.props.book, event.target.value);
-        console.log(this.props.changeShelf)
+        this.props.changeShelf
     }
     render() {
         return (

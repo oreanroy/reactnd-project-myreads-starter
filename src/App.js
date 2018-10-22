@@ -28,7 +28,6 @@ class BooksApp extends React.Component {
     this.getBooks()
   }
   render() {
-    console.log("app");
     return (
     <BrowserRouter>
       <div className="app">

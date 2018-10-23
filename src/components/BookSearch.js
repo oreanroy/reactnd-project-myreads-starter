@@ -2,25 +2,37 @@ import React, {Component} from "react";
 import * as BooksAPI from '../BooksAPI';
 import {PropTypes} from 'prop-types';
 
-export default class Book extends Component {
+export default class BookSearch extends Component {
     static propTypes = {
         book: PropTypes.object.isRequired,
-        changeShelf: PropTypes.func.isRequired
+        changeShelf: PropTypes.func.isRequired,
+        books: PropTypes.array.isRequired
 
     } 
     change = async (event) =>{
         await BooksAPI.update(this.props.book, event.target.value);
         this.props.changeShelf()
     }
-
+    
+    
     render() {
+        let shelf = "none";
+        for(var i in this.props.books){
+            if(this.props.book.id == this.props.books[i].id)
+                {
+                    shelf = this.props.books[i].shelf; 
+                    //console.log(this.props.book+" "+shelf)
+                    break;
+            }
+        }
+        
         //console.log(this.props.book);
         return (
             <div className="book" key={this.props.book.id}>
                 <div className="book-top">
                     <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.smallThumbnail? this.props.book.imageLinks.smallThumbnail: ""}")` }}></div>
                     <div className="book-shelf-changer">
-                        <select onChange={this.change} value={this.props.book.shelf? this.props.book.shelf:"none"}>
+                        <select onChange={this.change} value={shelf}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>

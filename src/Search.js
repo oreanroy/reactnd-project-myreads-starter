@@ -1,11 +1,17 @@
 import React from 'react'
 import './App.css'
-import Book from './components/Book';
+import BookSearch from './components/BookSearch';
 import * as BooksAPI from './BooksAPI'
 import { Link } from "react-router-dom"
+import {PropTypes} from 'prop-types';
 
 
 class Search extends React.Component {
+  static propTypes = {
+    books: PropTypes.array.isRequired,
+    changeShelf: PropTypes.func.isRequired
+
+}
   state = {
     searchBooks: [],
     query: ''
@@ -24,8 +30,9 @@ class Search extends React.Component {
     if(query !=='' &&  isNaN(query)){
       try {
       BooksAPI.search(query).then((books) => {
-        if(!books.error)
+        if(!books.error){
           this.setState({searchBooks: books})
+        }
         else
         this.setState({query: "not found"})
       }); }catch(err){
@@ -83,7 +90,7 @@ class Search extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
             {
-              this.state.searchBooks.map((data) => <li key={data.id}><Book book={data} changeShelf={this.updateBook}/> </li> )
+              this.state.searchBooks.map((data) => <li key={data.id}><BookSearch book={data} changeShelf={this.updateBook} books={this.props.books}/> </li> )
             }
             </ol>
           </div>

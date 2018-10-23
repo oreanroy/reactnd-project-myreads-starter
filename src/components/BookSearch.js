@@ -19,14 +19,11 @@ export default class BookSearch extends Component {
         let shelf = "none";
         for(var i in this.props.books){
             if(this.props.book.id == this.props.books[i].id)
-                {
-                    shelf = this.props.books[i].shelf; 
-                    //console.log(this.props.book+" "+shelf)
-                    break;
+            {
+                shelf = this.props.books[i].shelf; 
+                break;
             }
         }
-        
-        //console.log(this.props.book);
         return (
             <div className="book" key={this.props.book.id}>
                 <div className="book-top">

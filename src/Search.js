@@ -41,8 +41,6 @@ class Search extends React.Component {
    }
   }
   render() {
-    //console.log("the searchbook is ", this.state.searchBooks);
-    //console.log("the type of serachbook is "+typeof(this.state.searchBooks));
     if(this.state.query.length === 0){
       return(
         <div className="search-books">

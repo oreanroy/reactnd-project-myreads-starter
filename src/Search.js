@@ -34,8 +34,8 @@ class Search extends React.Component {
    }
   }
   render() {
-    console.log("the searchbook is ", this.state.searchBooks);
-    console.log("the type of serachbook is "+typeof(this.state.searchBooks));
+    //console.log("the searchbook is ", this.state.searchBooks);
+    //console.log("the type of serachbook is "+typeof(this.state.searchBooks));
     if(this.state.query.length === 0){
       return(
         <div className="search-books">
@@ -83,7 +83,7 @@ class Search extends React.Component {
           <div className="search-books-results">
             <ol className="books-grid">
             {
-              this.state.searchBooks.map((data) => <li><Book book={data} key={data.id} changeShelf={this.updateBook}/> </li> )
+              this.state.searchBooks.map((data) => <li key={data.id}><Book book={data} changeShelf={this.updateBook}/> </li> )
             }
             </ol>
           </div>

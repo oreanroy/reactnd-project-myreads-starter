@@ -16,7 +16,7 @@ export default class Shelf extends Component {
         <h2 className="bookshelf-title">{this.props.title}</h2>
         <div className="bookshelf-books">
           <ol className="books-grid">
-              {this.props.books.map((data) => <li><Book book={data} key={data.id} changeShelf={this.updateBook}/> </li> )}
+              {this.props.books.map((data) => <li key={data.id}><Book book={data} changeShelf={this.updateBook}/> </li> )}
           </ol>
         </div>
       </div>

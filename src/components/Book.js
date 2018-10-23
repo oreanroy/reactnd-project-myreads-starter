@@ -17,9 +17,9 @@ export default class Book extends Component {
         return (
             <div className="book" key={this.props.book.id}>
                 <div className="book-top">
-                    <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.smallThumbnail}")` }}></div>
+                    <div className="book-cover" style={{ width: 128, height: 188, backgroundImage: `url("${this.props.book.imageLinks.smallThumbnail? this.props.book.imageLinks.smallThumbnail: ""}")` }}></div>
                     <div className="book-shelf-changer">
-                        <select onChange={this.change} value={this.props.book.shelf}>
+                        <select onChange={this.change} value={this.props.book.shelf? this.props.book.shelf:"none"}>
                             <option value="move" disabled>Move to...</option>
                             <option value="currentlyReading">Currently Reading</option>
                             <option value="wantToRead">Want to Read</option>
